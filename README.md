@@ -1,3 +1,5 @@
+# ssqPCRmf (Strain-specific qPCR Marker Finder) 
+
 This is a simple workflow for designing a primer-target system for monitoring specific strains of interest using qPCR. It is built using a minimal amount of freely available command line tools (linux) in combination with web applications. <br>
 Starting material is an assembled genome of your strain of interest. A set of reference genomes from related species is required to identify sequence parts in the genome of interest, that are unique for this genome an do not occur in related strains. The unique candidate sequences can be used to design a strain specific primer target system.
 
