@@ -5,7 +5,7 @@ Starting material is an assembled genome of your strain of interest. A set of re
 
 For paper see: (enter paper upon release)
 
-### Worklfow outline
+### Workflow outline
 
 #TODO: enter workflow figure
 
