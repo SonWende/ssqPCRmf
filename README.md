@@ -27,11 +27,10 @@ For paper see: (enter paper upon release)
     example: 463 Xanthomonodaceae Genomes with total (unpacked) size of 1.95 Gb. kmer file: 20Gb
 
 - Memory and CPU: Workflow was run on a high performance cluster using 80 CPUs.
-
-
-- 80 CPU: 93112
-- 1 CPU: 93113
-- 80 CPU, mem 10240:  93115
+#TODO: add runtime information
+	- 80 CPU: 93112
+	- 1 CPU: 93113
+	- 80 CPU, mem 10240:  93115
 
 ## Step 1: Downloading set of reference genomes
 First obtain a set of reference genomes related to the genome of interest. We found that using "family" makes a good set of exclusion genomes and is likely to reveal promising candidate sequences. <br>We use the metadata tables from ncbi's refseq and from [gtdb](https://gtdb.ecogenomic.org/) to filter for related genomes and to make a selection. These tables contain all relevant information and can be searched an filtered using simple bash onliners. Afterwards we can download the selected list of genomes.
