@@ -136,7 +136,7 @@ For filtering the consolidated.fasta file based on a score threshold use the <co
 ./filter-score.sh consolidated.fasta 0.97 > consolidated-filtered.fasta
 ```
 
-## Step 3: 
+## Step 3: Confirming uniqueness of candidate sequences
 We blast the candiate sequences to the nt database. This ensures that they are not only unique among the selected reference genomes, but have no high similarities o any other known sequences in the nt database. Confrim this either using the [blastn website ](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome). Or use a local installation of blast+ with a local download of the indexed nt database, see [blast+ manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/) for details.
 
 Best use a sequence with no blast hits for Primer design
@@ -162,7 +162,7 @@ We recommend picking the sequence with the highest score and a decent length (> 
 
 If there is no good match, try another candidate sequence.
 
-## Step 5:
+## Step 5: BLAST Validation
 Optionally you can confirm again, that the primers do not target a misleading sequence using blast
 
 
