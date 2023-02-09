@@ -1,7 +1,7 @@
 # ssqPCRmf (Strain-specific qPCR Marker Finder) 
 
-This is a simple workflow for designing a primer-target system for monitoring specific strains of interest using qPCR. It is built using a minimal amount of freely available command line tools (linux) in combination with web applications. <br>
-Starting material is an assembled genome of your strain of interest. A set of reference genomes from related species is required to identify sequence parts in the genome of interest, that are unique for this genome an do not occur in related strains. The unique candidate sequences can be used to design a strain specific primer target system.
+This is a simple workflow for designing a primer-target system for monitoring bacterial strains of interest using qPCR. It is built using a minimal amount of freely available command line tools (linux) in combination with web applications. <br>
+Starting material is an assembled genome of your strain of interest. A set of reference genomes from related species and strains is required to identify sequence parts in the genome of interest, that are unique for this genome an do not occur in related strains. The unique candidate sequences can be used to design a strain-specific qPCR system.
 
 For paper see: (enter paper upon release)
 
@@ -33,7 +33,7 @@ For paper see: (enter paper upon release)
 	- 80 CPU, mem 10240:  93115
 
 ## Step 1: Downloading set of reference genomes
-First obtain a set of reference genomes related to the genome of interest. We found that using "family" makes a good set of exclusion genomes and is likely to reveal promising candidate sequences. <br>We use the metadata tables from ncbi's refseq and from [gtdb](https://gtdb.ecogenomic.org/) to filter for related genomes and to make a selection. These tables contain all relevant information and can be searched an filtered using simple bash onliners. Afterwards we can download the selected list of genomes.
+First obtain a set of reference genomes related to the genome of interest. We found that the family level is a suitable threshold to select the exclusion genomes. This resulted a sufficient database of related genome sequences and is likely to reveal promising candidate sequences. <br>We use the metadata tables from ncbi's refseq and from [gtdb](https://gtdb.ecogenomic.org/) to filter for related genomes and to make a selection. These tables contain all relevant information and can be searched an filtered using simple bash onliners. Afterwards we can download the selected list of genomes.
 
 
 ### First make a directory to place the reference genomes.
@@ -61,8 +61,12 @@ tar -xzvf 01_Download_Refseq_Genomes/bac120_metadata_r95.tar.gz
 mv bac120_metadata_r95.tsv 01_Download_Refseq_Genomes/
 ```
 GTDB might have newer releases, check under https://data.ace.uq.edu.au/public/gtdb/data/releases/ and select the desired version
+
 ### Filter for the desired Taxonomy. 
-For selecting all listed geneoms from the family of Xanthomonodaceae, the search term would be <code>f__Xanthomonodaceae</code>. You can filter either based on the GTDB taxonomy (use column 17 in gtdb metadata table) or the ncbi taxnomy (use column 79 in gtdb metadata table)
+
+In the following example of the workflow the genome of interest is a *Aureimonas altamirensis C2P003* and the exclusion genomes are selected from the family *Xanthomonodaceae*. For different exclusion groups, change the file names and parameters accordingly. 
+
+For selecting all listed genomes from the family of Xanthomonodaceae, the search term would be <code>f__Xanthomonodaceae</code>. You can filter either based on the GTDB taxonomy (use column 17 in gtdb metadata table) or the ncbi taxnomy (use column 79 in gtdb metadata table)
 ```
 # move to genomes directory
 cd 01_Download_Refseq_Genomes
@@ -100,7 +104,7 @@ These steps are also available as bash script <code>download-reference-genomes.s
 donwload-reference-genomes.sh <family>
 ```
 
-were family can be set as "Xanthomonodaceae". Selecting on a different taxonomic level requires additional modifications.
+where family can be set as "Xanthomonodaceae". Selecting on a different taxonomic level requires additional modifications.
 
 ## Step 2: Running Neptune
 
@@ -163,6 +167,6 @@ We recommend picking the sequence with the highest score and a decent length (> 
 If there is no good match, try another candidate sequence.
 
 ## Step 5: BLAST Validation
-Optionally you can confirm again, that the primers do not target a misleading sequence using blast
+Optionally you can confirm again, that the primers do not target a misleading sequence using blast.
 
 
