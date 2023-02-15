@@ -169,7 +169,7 @@ We want to retain all sequences that have no match to the nt database. If the <c
 ## Step 4: Primer Design with Oligo Architect
 
 If you have a unique sequence you can use the web tool [OligoArchitect](http://www.oligoarchitect.com/LoginServlet) from Sigma-Aldrich to identify a primer target system.<br>
-The search was performed with the recommended parameters: We searched for primers/probes with a length between 17 and 25 bp, PCR products shouldn't be too long to avoid self-dimers and hairpins (<300), annealing temperatures of primers should by slightly under 60°C and for probes slightly under 70°C. 
+We performed the search with the recommended parameters: We searched for primers/probes with a length between 17 and 25 bp, PCR products shouldn't be too long to avoid self-dimers and hairpins (<300), annealing temperatures of primers should by slightly under 60°C and for probes slightly under 70°C. 
 
 
 
