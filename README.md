@@ -7,7 +7,6 @@ For paper see: (enter paper upon release)
 
 ### Workflow outline
 
-#TODO: enter workflow figure
 
 1)	Obtaining set of closely related reference genomes (exclusion geneomes)
 2)	Identifying potential strain specific sequences of target genome  to reference genomes using [neptune](https://phac-nml.github.io/neptune/)
@@ -16,6 +15,9 @@ For paper see: (enter paper upon release)
 5)  BLAST validation (optional, web tool)
 6)  Experimental validation
 
+<img src="Workflow_ssqPCRmf.png" alt="Workflow Figure"  width="60%">
+
+
 
 ### Requirements
 
@@ -23,14 +25,18 @@ For paper see: (enter paper upon release)
 
 - Neptune: Neptune was used to select candidate sequences that are unique marker for strain of interest. <br>It can be installed using conda, for detailed [installation instruction](https://phac-nml.github.io/neptune/install/) see neptune website (https://phac-nml.github.io/neptune/)
 
-- Storage: Storage requirements are dependent on the set of reference genomes you download. The largest storage will be required by neptune for storing the kmers, but they can be deleted immediatly after run. <br>
-    example: 463 Xanthomonodaceae Genomes with total (unpacked) size of 1.95 Gb. kmer file: 20Gb
+- Storage: Storage requirements are dependent on the set of reference genomes you download. The largest storage will be required by neptune for storing the k-mers, but they can be deleted immediatly after run. <br>
+    example: 463 Xanthomonodaceae Genomes with total (unpacked) size of 1.95 Gb. k-mer file: 20Gb
 
-- Memory and CPU: Workflow was run on a high performance cluster using 80 CPUs.
-#TODO: add runtime information
-	- 80 CPU: 93112
-	- 1 CPU: 93113
-	- 80 CPU, mem 10240:  93115
+- Memory and CPU: Workflow was run on a high performance cluster, runtime was ~4h for 80CPUs and ~20h using 1 CPU
+	<details>
+
+	|   |  nCPUs |  maxRSS |  time (hh:mm:ss) |  
+	|---|---|---|---|
+	|   |  80 |  95022908K |  04:23:17 |  
+	|   | 1  | 67494608K  | 20:51:31  |  
+	</details>
+
 
 ## Step 1: Downloading set of reference genomes
 First obtain a set of reference genomes related to the genome of interest. We found that the family level is a suitable threshold to select the exclusion genomes. This resulted a sufficient database of related genome sequences and is likely to reveal promising candidate sequences. <br>We use the metadata tables from ncbi's refseq and from [gtdb](https://gtdb.ecogenomic.org/) to filter for related genomes and to make a selection. These tables contain all relevant information and can be searched an filtered using simple bash onliners. Afterwards we can download the selected list of genomes.
@@ -64,7 +70,7 @@ GTDB might have newer releases, check under https://data.ace.uq.edu.au/public/gt
 
 ### Filter for the desired Taxonomy. 
 
-In the following example of the workflow the genome of interest is a *Aureimonas altamirensis C2P003* and the exclusion genomes are selected from the family *Xanthomonodaceae*. For different exclusion groups, change the file names and parameters accordingly. 
+In the following example of the workflow the genome of interest is an assembled strain of *Aureimonas altamirensis* and the exclusion genomes are selected from the family *Xanthomonodaceae*. For different exclusion groups, change the file names and parameters accordingly. 
 
 For selecting all listed genomes from the family of Xanthomonodaceae, the search term would be <code>f__Xanthomonodaceae</code>. You can filter either based on the GTDB taxonomy (use column 17 in gtdb metadata table) or the ncbi taxnomy (use column 79 in gtdb metadata table)
 ```
@@ -161,10 +167,11 @@ We want to retain all sequences that have no match to the nt database. If the <c
 </details>
 
 ## Step 4: Primer Design with Oligo Architect
-If you have a unique sequencey you can use the web tool [OligoArchitect](http://www.oligoarchitect.com/LoginServlet) from Sigma-Aldrich to identify a primer target system.
-We recommend picking the sequence with the highest score and a decent length (> 300 bp) for primer design.
 
-If there is no good match, try another candidate sequence.
+If you have a unique sequence you can use the web tool [OligoArchitect](http://www.oligoarchitect.com/LoginServlet) from Sigma-Aldrich to identify a primer target system.<br>
+The search was performed with the recommended parameters: We searched for primers/probes with a length between 17 and 25 bp, PCR products shouldn't be too long to avoid self-dimers and hairpins (<300), annealing temperatures of primers should by slighty under 60°C and for probes slightly under 70°C. 
+
+
 
 ## Step 5: BLAST Validation
 Optionally you can confirm again, that the primers do not target a misleading sequence using blast.
