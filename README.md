@@ -147,7 +147,7 @@ For filtering the consolidated.fasta file based on a score threshold use the <co
 ```
 
 ## Step 3: Confirming uniqueness of candidate sequences
-We blast the candiate sequences to the nt database. This ensures that they are not only unique among the selected reference genomes, but have no high similarities o any other known sequences in the nt database. Confrim this either using the [blastn website ](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome). Or use a local installation of blast+ with a local download of the indexed nt database, see [blast+ manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/) for details.
+We blast the candiate sequences to the nt database. This ensures that they are not only unique among the selected reference genomes, but have no high similarities to any other known sequences in the nt database. Confrim this either using the [blastn website ](https://blast.ncbi.nlm.nih.gov/Blast.cgi?PROGRAM=blastn&PAGE_TYPE=BlastSearch&LINK_LOC=blasthome). Or use a local installation of blast+ with a local download of the indexed nt database, see [blast+ manual](https://www.ncbi.nlm.nih.gov/books/NBK279690/) for details.
 
 Best use a sequence with no blast hits for Primer design
 
@@ -169,7 +169,7 @@ We want to retain all sequences that have no match to the nt database. If the <c
 ## Step 4: Primer Design with Oligo Architect
 
 If you have a unique sequence you can use the web tool [OligoArchitect](http://www.oligoarchitect.com/LoginServlet) from Sigma-Aldrich to identify a primer target system.<br>
-The search was performed with the recommended parameters: We searched for primers/probes with a length between 17 and 25 bp, PCR products shouldn't be too long to avoid self-dimers and hairpins (<300), annealing temperatures of primers should by slighty under 60°C and for probes slightly under 70°C. 
+The search was performed with the recommended parameters: We searched for primers/probes with a length between 17 and 25 bp, PCR products shouldn't be too long to avoid self-dimers and hairpins (<300), annealing temperatures of primers should by slightly under 60°C and for probes slightly under 70°C. 
 
 
 
